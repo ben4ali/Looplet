@@ -10,20 +10,34 @@
     gap: 2rem;
 }
 .canvas-container{
+    display: flex;
+    flex-direction: column;
+    width: 35rem;
+    height: 35rem;
+    position: relative;
+    background-color: black;
+}
+.canvas-holder{
     width: 35rem;
     height: 35rem;
     overflow: hidden;
-    background-color: black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.canvas-container canvas{
+
+.canvas-holder canvas{
     width: 85%;
     height: 85%;
     object-fit: contain;
 }
-.canvas-container img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+
+.canvas-controls{
+    display: flex;
+    gap: 1rem;
+    position: absolute;
+    bottom: -18%;
 }
 
 .controls-container{

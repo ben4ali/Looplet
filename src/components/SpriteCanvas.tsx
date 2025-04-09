@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 
 interface SpriteCanvasProps {
   image: HTMLImageElement | null;
@@ -14,6 +14,8 @@ export const SpriteCanvas: FC<SpriteCanvasProps> = ({
   interval,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const [currentFrame, setCurrentFrame] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     if (!image || !canvasRef.current) return;
@@ -28,12 +30,11 @@ export const SpriteCanvas: FC<SpriteCanvasProps> = ({
     canvas.width = frameWidth;
     canvas.height = frameHeight;
 
-    let currentFrame = 0;
     const totalFrames = columns * rows;
 
-    const drawFrame = () => {
-      const column = currentFrame % columns;
-      const row = Math.floor(currentFrame / columns);
+    const drawFrame = (frame: number) => {
+      const column = frame % columns;
+      const row = Math.floor(frame / columns);
 
       context.clearRect(0, 0, canvas.width, canvas.height);
       context.drawImage(
@@ -47,18 +48,57 @@ export const SpriteCanvas: FC<SpriteCanvasProps> = ({
         canvas.width,
         canvas.height
       );
-
-      currentFrame = (currentFrame + 1) % totalFrames;
     };
 
-    const intervalId = setInterval(drawFrame, interval);
+    drawFrame(currentFrame);
 
-    return () => clearInterval(intervalId);
-  }, [image, columns, rows, interval]);
+    let intervalId: NodeJS.Timeout | null = null;
+    if (isPlaying) {
+      intervalId = setInterval(() => {
+        setCurrentFrame((prevFrame) => (prevFrame + 1) % totalFrames);
+      }, interval);
+    }
+
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, [image, columns, rows, currentFrame, isPlaying, interval]);
+
+  const totalFrames = columns * rows;
+
+  const handlePlayPause = () => {
+    setIsPlaying((prev) => !prev);
+  };
+
+  const handleNextFrame = () => {
+    setCurrentFrame((prevFrame) => (prevFrame + 1) % totalFrames);
+  };
+
+  const handlePreviousFrame = () => {
+    setCurrentFrame((prevFrame) => (prevFrame - 1 + totalFrames) % totalFrames);
+  };
+
+  const handleFirstFrame = () => {
+    setCurrentFrame(0);
+  };
+
+  const handleLastFrame = () => {
+    setCurrentFrame(totalFrames - 1);
+  };
 
   return (
     <div className="canvas-container">
-      <canvas ref={canvasRef} />
+      <div className="canvas-holder">
+        <canvas ref={canvasRef} />
+      </div>
+
+      <div className="canvas-controls">
+        <button onClick={handleFirstFrame}>First Frame</button>
+        <button onClick={handlePreviousFrame}>Previous Frame</button>
+        <button onClick={handlePlayPause}>{isPlaying ? "Pause" : "Play"}</button>
+        <button onClick={handleNextFrame}>Next Frame</button>
+        <button onClick={handleLastFrame}>Last Frame</button>
+      </div>
     </div>
   );
 };
