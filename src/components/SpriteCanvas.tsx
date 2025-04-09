@@ -1,4 +1,5 @@
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC } from "react";
+import { useSpriteAnimation } from "../hooks/useSpriteAnimation";
 
 interface SpriteCanvasProps {
   image: HTMLImageElement | null;
@@ -13,78 +14,15 @@ export const SpriteCanvas: FC<SpriteCanvasProps> = ({
   rows,
   interval,
 }) => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [currentFrame, setCurrentFrame] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  useEffect(() => {
-    if (!image || !canvasRef.current) return;
-
-    const canvas = canvasRef.current;
-    const context = canvas.getContext("2d");
-    if (!context) return;
-
-    const frameWidth = image.width / columns;
-    const frameHeight = image.height / rows;
-
-    canvas.width = frameWidth;
-    canvas.height = frameHeight;
-
-    const totalFrames = columns * rows;
-
-    const drawFrame = (frame: number) => {
-      const column = frame % columns;
-      const row = Math.floor(frame / columns);
-
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      context.drawImage(
-        image,
-        column * frameWidth,
-        row * frameHeight,
-        frameWidth,
-        frameHeight,
-        0,
-        0,
-        canvas.width,
-        canvas.height
-      );
-    };
-
-    drawFrame(currentFrame);
-
-    let intervalId: NodeJS.Timeout | null = null;
-    if (isPlaying) {
-      intervalId = setInterval(() => {
-        setCurrentFrame((prevFrame) => (prevFrame + 1) % totalFrames);
-      }, interval);
-    }
-
-    return () => {
-      if (intervalId) clearInterval(intervalId);
-    };
-  }, [image, columns, rows, currentFrame, isPlaying, interval]);
-
-  const totalFrames = columns * rows;
-
-  const handlePlayPause = () => {
-    setIsPlaying((prev) => !prev);
-  };
-
-  const handleNextFrame = () => {
-    setCurrentFrame((prevFrame) => (prevFrame + 1) % totalFrames);
-  };
-
-  const handlePreviousFrame = () => {
-    setCurrentFrame((prevFrame) => (prevFrame - 1 + totalFrames) % totalFrames);
-  };
-
-  const handleFirstFrame = () => {
-    setCurrentFrame(0);
-  };
-
-  const handleLastFrame = () => {
-    setCurrentFrame(totalFrames - 1);
-  };
+  const {
+    canvasRef,
+    handlePlayPause,
+    handleNextFrame,
+    handlePreviousFrame,
+    handleFirstFrame,
+    handleLastFrame,
+    isPlaying,
+  } = useSpriteAnimation(image, columns, rows, interval);
 
   return (
     <div className="canvas-container">
