@@ -1,54 +1,47 @@
-# React + TypeScript + Vite
+# Spritelab
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Spritelab is a web application designed to help users preview and control sprite animations. It allows users to upload sprite sheets, adjust animation settings, and preview animations frame by frame or in a continuous loop.
 
-Currently, two official plugins are available:
+## Purpose
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The purpose of SpriteLab is to provide an intuitive and interactive tool for developers, designers, and artists working with sprite sheets. It simplifies the process of testing and fine-tuning sprite animations for games or other visual projects.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Sprite Sheet Upload**: Upload your sprite sheet in image format.
+- **Animation Controls**:
+  - Adjust the number of columns and rows in the sprite sheet.
+  - Set the animation interval (speed) in milliseconds.
+  - Play, pause, and navigate through frames (first, previous, next, last).
+- **Live Preview**: View the animation in real-time on a canvas.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Technologies Used
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **Frontend**: React (with TypeScript)
+- **Build Tool**: Vite
+- **Styling**: CSS
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## How to Use
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/ben4ali/Spritelab.git
+   cd SpriteLab
+   ```
+
+2. Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+3. Start the development server:
+
+    ```bash
+    npm run dev
+    ```
+
+4. Open your browser and navigate to the provided local development URL (e.g., `http://localhost:5713`).
+
+5. Upload your sprite sheet and experiment with the animation controls to preview your sprite animations.
