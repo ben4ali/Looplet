@@ -4,7 +4,6 @@ Spritelab is a web application designed to help users preview and control sprite
 
 [Click here for the live Preview](https://www.aliben.me/Spritelab/)
 
-
 ## Previews
 
 ![SpriteLab Preview](previews/preview1.png)

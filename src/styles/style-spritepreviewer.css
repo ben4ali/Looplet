@@ -432,6 +432,7 @@
     .canvas-container {
         width: 100%;
         height: auto;
+        min-height: 25rem;
         margin-bottom: 8rem;
     }
 
