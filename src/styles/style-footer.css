@@ -186,3 +186,44 @@
     background-color: #55fd74;
     border: 4px solid rgb(48, 152, 72);
 }
+
+@media (max-width: 1080px) {
+    .footer-container{
+        padding-block: 3rem;
+    }
+    .footer-content{
+        width: 90%;
+    }
+
+    .author h4{
+        font-size: 1.1rem;
+    }
+    .author p{
+        font-size: 0.5rem;
+    }
+
+    .info-links p{
+        font-size: 0.6rem;
+    }
+    .info-links span{
+        font-size: 0.7rem;
+    }
+    .footer-bottom{
+        margin-top: 1rem;
+        padding-top: 1.5rem;
+        width: 90%;
+    }
+
+    .footer-bottom h5{
+        font-size: 1rem;
+    }
+    .controllers-buttons{
+        margin-top: 1rem;
+        gap: 0.5rem;
+    }
+    .controllers-buttons span{
+        width: 2rem;
+        height: 2rem;
+        font-size: 1.15rem;
+    }
+}
