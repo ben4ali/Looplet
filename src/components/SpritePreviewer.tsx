@@ -2,6 +2,7 @@ import { useState } from "react";
 import { SpriteCanvas } from "./SpriteCanvas";
 import { SpriteControls } from "./SpriteControls";
 import "../styles/style-spritepreviewer.css"
+import Spritelab from "../assets/Spritelab.png"
 
 const SpritePreviewer = () => {
   const [image, setImage] = useState<HTMLImageElement | null>(null);
@@ -11,7 +12,11 @@ const SpritePreviewer = () => {
 
   return (
     <div className="spritepreviewer-container">
-      <h1>SPRITELAB</h1>
+      <div className="spritepreviewer-header">
+        <h1>SPRITELAB</h1>
+        <img src={Spritelab} alt="spritelab" className="spritelab-logo" />
+      </div>
+
       <div className="spritepreviewer-overview">
           <SpriteCanvas
             image={image}
