@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { useSpriteAnimation } from "../hooks/useSpriteAnimation";
 
 import blCorner from "../assets/ui/blCorner.png"

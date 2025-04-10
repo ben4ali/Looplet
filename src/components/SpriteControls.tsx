@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { SpriteOriginal } from "./SpriteOriginal";
 
 import longPanel from "../assets/ui/longPanel.png"
