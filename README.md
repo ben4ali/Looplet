@@ -6,6 +6,14 @@ Spritelab is a web application designed to help users preview and control sprite
 
 The purpose of SpriteLab is to provide an intuitive and interactive tool for developers, designers, and artists working with sprite sheets. It simplifies the process of testing and fine-tuning sprite animations for games or other visual projects.
 
+
+## Previews
+
+![SpriteLab Preview](previews/preview1.png)
+![SpriteLab Preview](previews/preview2.png)
+![SpriteLab Preview](previews/preview3.gif)
+![SpriteLab Preview](previews/preview4.gif)
+
 ## Features
 
 - **Sprite Sheet Upload**: Upload your sprite sheet in image format.
