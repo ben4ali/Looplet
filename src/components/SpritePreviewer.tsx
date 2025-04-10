@@ -11,6 +11,7 @@ const SpritePreviewer = () => {
 
   return (
     <div className="spritepreviewer-container">
+      <h1>SPRITELAB</h1>
       <div className="spritepreviewer-overview">
           <SpriteCanvas
             image={image}

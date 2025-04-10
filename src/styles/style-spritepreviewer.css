@@ -1,35 +1,74 @@
 .spritepreviewer-container{
     display: flex;
     flex-direction: column;
-    height: 40rem;
+    height: 35rem;
 }
 
 .spritepreviewer-overview{
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 5rem;
+}
+
+.spritepreviewer-container h1{
+    color: rgb(237, 205, 153);
+    font-size: 3.5rem;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 4rem;
+    margin-top: 1rem;
+    font-family: Pixelated;
 }
 .canvas-container{
     display: flex;
     flex-direction: column;
-    width: 35rem;
-    height: 35rem;
+    align-items: center;
+    height: 42rem;
+    width: 45%;
     position: relative;
-    background-color: black;
+    background-color: rgb(17, 11, 9);
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.1) 75%, rgba(255, 255, 255, 0.1)), 
+                      linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.1) 75%, rgba(255, 255, 255, 0.1));
+    background-size: 5rem 5rem;
+    background-position: 0 0, 2.5rem 2.5rem;
 }
 .canvas-holder{
     width: 35rem;
-    height: 35rem;
     overflow: hidden;
-
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.corner-img{
+    position: absolute;
+    height: 10rem;
+    width: 10rem;
+    object-fit: contain;
+}
+
+.corner-img:nth-child(1){
+    top: -2%;
+    left: -2%;
+}
+
+.corner-img:nth-child(2){
+    top: -2%;
+    right: -2%;
+}
+.corner-img:nth-child(3){
+    bottom: -2%;
+    left: -2%;
+}
+.corner-img:nth-child(4){
+    bottom: -2%;
+    right: -2%;
+}
+
+
 .canvas-holder canvas{
-    width: 85%;
-    height: 85%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
 }
 
@@ -39,6 +78,71 @@
     position: absolute;
     bottom: -18%;
 }
+#playButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15rem;
+    font-size: 25px;
+    font-family: 'Pixelated', sans-serif !important;
+}
+#playButton p{
+    margin: 0;
+    transform: translateY(-0.3rem);
+    color:rgb(237, 205, 153);
+}
+.canvas-controls button{
+    background-color: transparent !important;
+    position: relative;
+    height: 5rem;
+    width: 5rem;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+.canvas-container button p{
+    position: relative;
+    z-index: 2;
+    font-family: Pixelated;
+
+}
+
+.canvas-container button img{
+    position: absolute;
+    inset: 50%;
+    width: 40%;
+    height: 40%;
+    object-fit: contain;
+    z-index: 1;
+    border-radius: 5px;
+    transform: translate(-50%,-50%);
+    filter: brightness(0) saturate(100%) invert(84%) sepia(20%) saturate(500%) hue-rotate(0deg) brightness(85%) contrast(100%);
+}
+
+.canvas-container button:hover img{
+    filter: brightness(0) saturate(100%) invert(84%) sepia(20%) saturate(500%) hue-rotate(0deg) brightness(100%) contrast(100%);
+    transition: all 0.2s ease-in-out;
+}
+
+.canvas-container button:hover .bg-image{
+    filter: brightness(1.2) !important;
+}
+
+.bg-image{
+    border: none !important;
+    outline: none !important;
+    inset: 0 !important;
+    position: absolute;
+    z-index: 1;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: fill;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    transform: translate(0%,0%) !important;
+    filter: none !important;
+}
 
 .controls-container{
     width: 17rem;
@@ -47,7 +151,21 @@
     padding-inline: 1.5rem;
     height: 100%;
     flex-direction: column;
-    border: 1px solid rgba(255, 255, 255, 0.434);
+    position: relative;
+    gap: 1rem;
+}
+
+.controls-container img{
+    width: 100%;
+    height: 100%;
+    object-fit:fit;
+    z-index: 1;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    border: none;
+    outline: none;
+    
 }
 
 .controls-container h3{
@@ -58,20 +176,199 @@
 .spritepreviewer-controls{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center;;
 }
 
 .input-group{
     display: flex;
     flex-direction: column;
     align-items: start;
+    position: relative;
+    z-index: 2;
+    margin-left: 1.5rem;
+}
+
+.input-group label{
+    color: rgb(237, 205, 153);
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    font-family: Pixelated;
+}
+
+.input-group span{
+    color: rgb(237, 205, 153);
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    font-family: Pixelated;
+}
+
+.upload-group{
+    border-top: 4px solid rgb(237, 205, 153);
+    margin-left: 0;
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 1rem;
+    padding-top: 3rem;
+    height: 4rem;
+}
+.upload-zone{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-block: 1.5rem;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    border: 3px dashed rgb(237, 205, 153,0.7);
+    border-radius: 5px;
+}
+
+.file-label{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-label img{
+    position: relative !important;
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
+    filter: brightness(0) saturate(100%) invert(84%) sepia(20%) saturate(500%) hue-rotate(0deg) brightness(85%) contrast(100%);
+}
+
+.file-label p{
+    color: rgb(237, 205, 153);
+    font-size: 0.6rem;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    font-family: Pixelated;
+}
+
+.upload-zone input{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.upload-zone:hover {
+    background-color: rgb(237, 205, 153,0.2);
+}
+
+.slider-input {
+  -webkit-appearance: none;
+  appearance: none; 
+  width: 87%;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+
+}
+
+.slider-input::-webkit-slider-runnable-track {
+  height: 15px;
+  background: #ccc;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+
+}
+
+.slider-input::-moz-range-track {
+  height: 15px;
+  background: #563228;
+
+}
+
+.slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none; 
+  height: 19px;
+  width: 19px;
+  background-color: #ffdb81;
+  border: none;
+  border-radius: 2px;
+  box-shadow: -407px 0 0 400px rgb(162, 95, 59);
+}
+
+.slider-input::-moz-range-thumb {
+  height: 14px;
+  width: 14px;
+  background-color: #ffdb81;
+  border: 2px solid #c0a356;
+  border-radius: 5px;
+  box-shadow: -407px 0 0 400px rgb(162, 95, 59);
+}
+
+.button-group{
+    display: flex;
+    width: 85%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.button-group button{
+    position: relative;
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: transparent !important;
+    outline: none;
+    border: none;
+}
+
+.button-group button img{
+    position: absolute;
+    inset: 50%;
+    width: 40%;
+    height: 40%;
+    object-fit: contain;
+    z-index: 1;
+    border-radius: 5px;
+    transform: translate(-50%,-50%);
+    transition: all 0.1s ease-in-out;
+    filter: brightness(0) saturate(100%) invert(84%) sepia(20%) saturate(500%) hue-rotate(0deg) brightness(85%) contrast(100%);
+}
+
+.button-group button:hover img{
+    filter: brightness(0) saturate(100%) invert(84%) sepia(20%) saturate(500%) hue-rotate(0deg) brightness(100%) contrast(100%);
+
 }
 
 .original-container{
-    background-color: black;
+    position: relative;
+    z-index: 2;
+    background-color: rgb(28, 17, 13);
     height: 15rem;
     width: 15rem;
-    margin-top: 1.5rem;
+    margin: 0 auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    border-radius: 2px;
+    overflow: hidden;
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.1) 75%, rgba(255, 255, 255, 0.1)), 
+                      linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.1) 75%, rgba(255, 255, 255, 0.1));
+    background-size: 2rem 2rem;
+    background-position: 0 0, 1rem 1rem;
+    border: 5px solid rgb(52, 26, 16);
 }
 
 .original-container img{
