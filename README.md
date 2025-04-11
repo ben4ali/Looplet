@@ -10,6 +10,12 @@ Spritelab is a web application designed to help users preview and control sprite
 ![SpriteLab Preview](previews/preview2.png)
 ![SpriteLab Preview](previews/preview3.gif)
 ![SpriteLab Preview](previews/preview4.gif)
+![SpriteLab Preview](previews/preview5.gif)
+
+## Helpful Hints
+
+If you're interested in creating sprite sheets using AI, I made a GPT that generates optimized prompts for producing images tailored for sprite animations.
+[Click here to generate a prompt](https://chatgpt.com/g/g-67f899f660d081918b9fc651f4318e44-spritesheet-prompt-master)
 
 ## Features
 
